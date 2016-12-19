@@ -14,4 +14,8 @@ public class Quit implements Command {
     private void printExitMessage(PrintStream output) {
         output.println("Calculator says \"Goodbye!\"");
     }
+
+    static String getUsageDescription() {
+        return "exit program";
+    }
 }

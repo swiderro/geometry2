@@ -1,6 +1,7 @@
 package com.marcinswiderski.runner;
 
 import com.marcinswiderski.command.*;
+import com.marcinswiderski.exception.NotFoundException;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -29,15 +30,15 @@ public class GeometryCalculatorConsoleRunner {
             try {
                 command = readCommand();
                 command.execute(output);
-            } catch (CommandNotFoundException exception) {
+            } catch (NotFoundException exception) {
                 printCommandError(exception);
                 Help.printHelp(output);
             }
         } while (!(command instanceof Quit));
     }
 
-    private void printCommandError(CommandNotFoundException exception) {
-        output.println("Command not found: " + exception.getCommandSearched());
+    private void printCommandError(NotFoundException exception) {
+        output.println("Command not found: " + exception.getSearched());
     }
 
     private Command readCommand() {
@@ -59,6 +60,7 @@ public class GeometryCalculatorConsoleRunner {
 
     private void printPrompt() {
         output.print("calculator > ");
+        output.flush();
     }
 
 }

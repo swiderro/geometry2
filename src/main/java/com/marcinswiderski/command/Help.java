@@ -24,4 +24,8 @@ public class Help implements Command {
         output.println(sb.toString());
 
     }
+
+    static String getUsageDescription() {
+        return "help message";
+    }
 }
